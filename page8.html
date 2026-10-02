@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Little Universe</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #020208;
+    color: white;
+    font-family: Georgia, serif;
+    overflow-x: hidden;
+}
+
+.title {
+    text-align: center;
+    padding-top: 45px;
+    position: relative;
+    z-index: 5;
+}
+
+.title small {
+    font-family: monospace;
+    letter-spacing: 4px;
+    color: #777;
+}
+
+h1 {
+    font-size: clamp(38px, 8vw, 65px);
+    font-weight: normal;
+    font-style: italic;
+    margin: 12px;
+}
+
+.subtitle {
+    color: #888;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+.universe {
+    height: 65vh;
+    position: relative;
+}
+
+.star {
+    position: absolute;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    animation: twinkle 2s infinite alternate;
+}
+
+.star:hover {
+    transform: scale(1.6);
+}
+
+.star:nth-child(1) { top:15%; left:15%; }
+.star:nth-child(2) { top:35%; left:75%; }
+.star:nth-child(3) { top:60%; left:25%; }
+.star:nth-child(4) { top:25%; left:50%; }
+.star:nth-child(5) { top:70%; left:70%; }
+.star:nth-child(6) { top:45%; left:90%; }
+.star:nth-child(7) { top:80%; left:50%; }
+
+@keyframes twinkle {
+    from { opacity:.3; }
+    to { opacity:1; }
+}
+
+.message {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.9);
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.message-box {
+    max-width: 500px;
+    text-align: center;
+    border: 1px solid #555;
+    padding: 35px;
+    background: #08080f;
+}
+
+.message-box p {
+    line-height: 1.8;
+    color: #ddd;
+}
+
+.close {
+    margin-top: 20px;
+    background: transparent;
+    color: white;
+    border: 1px solid #555;
+    padding: 10px 20px;
+}
+
+.next {
+    display: none;
+    text-align: center;
+    position: relative;
+    z-index: 20;
+}
+
+.next a {
+    color: white;
+    text-decoration: none;
+    border: 1px solid #777;
+    padding: 14px 25px;
+    font-family: monospace;
+}
+</style>
+</head>
+
+<body>
+
+<div class="title">
+    <small>ARCHIVE 008</small>
+    <h1>our little universe.</h1>
+    <div class="subtitle">some stars have things to say.</div>
+</div>
+
+<div class="universe">
+
+    <div class="star" onclick="showMessage(0)">✦</div>
+    <div class="star" onclick="showMessage(1)">✦</div>
+    <div class="star" onclick="showMessage(2)">✦</div>
+    <div class="star" onclick="showMessage(3)">✦</div>
+    <div class="star" onclick="showMessage(4)">✦</div>
+    <div class="star" onclick="showMessage(5)">✦</div>
+    <div class="star" onclick="showMessage(6)">✦</div>
+
+</div>
+
+<div class="message" id="message">
+    <div class="message-box">
+        <p id="messageText"></p>
+        <button class="close" onclick="closeMessage()">close</button>
+    </div>
+</div>
+
+<div class="next" id="next">
+    <a href="page9.html">THE NEXT MEMORY →</a>
+</div>
+
+<script>
+
+const messages = [
+
+    "I hope you know how much your existence has changed my life.",
+
+    "Some memories don't need photographs. You just remember how they felt.",
+
+    "You are genuinely one of my favourite people.",
+
+    "If I could keep one thing forever, it would be the little moments.",
+
+    "You make ordinary days feel a little less ordinary.",
+
+    "No matter how much time passes, some people stay special.",
+
+    "And yes... I would still choose you. ❤️"
+
+];
+
+let clicked = 0;
+
+function showMessage(index) {
+
+    document.getElementById("messageText").innerText =
+        messages[index];
+
+    document.getElementById("message").style.display = "flex";
+
+    clicked++;
+
+    if (clicked >= 4) {
+        document.getElementById("next").style.display = "block";
+    }
+}
+
+function closeMessage() {
+    document.getElementById("message").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
