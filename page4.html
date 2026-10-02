@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>THE ARCHIVE</title>
+<title>The Archive ♡</title>
 
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono&family=Playfair+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;1,400;1,500&display=swap');
 
 * {
     margin: 0;
@@ -18,137 +19,444 @@
 }
 
 body {
-    background: #111;
-    color: #eee;
-    font-family: 'Space Mono', monospace;
+
     min-height: 100vh;
-}
-
-.container {
-    width: min(1200px, 92%);
-    margin: auto;
-    padding: 50px 0 100px;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    border-bottom: 1px solid #444;
-    padding-bottom: 25px;
-    margin-bottom: 50px;
-}
-
-header h1 {
-    font-size: clamp(40px, 8vw, 90px);
-    font-weight: 400;
-    letter-spacing: -5px;
-}
-
-header p {
-    font-size: 10px;
-    color: #777;
-    text-align: right;
-}
-
-/* GRID */
-
-.archive {
-    columns: 3 250px;
-    column-gap: 25px;
-}
-
-.card {
-    break-inside: avoid;
-    margin-bottom: 25px;
-    position: relative;
-    background: #1c1c1c;
-    padding: 12px;
-    transition: .4s;
-}
-
-.card:hover {
-    transform: rotate(-1deg) scale(1.02);
-}
-
-.photo {
-    width: 100%;
-    min-height: 250px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     background:
-        linear-gradient(135deg, #252525, #111);
+        radial-gradient(circle at 10% 10%, #ffd7e7 0%, transparent 25%),
+        radial-gradient(circle at 90% 20%, #e5d5ff 0%, transparent 25%),
+        radial-gradient(circle at 50% 100%, #ffe9d6 0%, transparent 30%),
+        #fff8f5;
 
-    color: #666;
-    font-size: 11px;
-    text-align: center;
+    color: #382a32;
+
+    overflow-x: hidden;
+
 }
 
-.tall {
-    min-height: 390px;
+/* FLOATING DECORATIONS */
+
+.decor {
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+    opacity: .6;
 }
 
-.small {
-    min-height: 190px;
+.d1 {
+    top: 8%;
+    left: 5%;
+    font-size: 30px;
+    transform: rotate(-15deg);
 }
 
-.caption {
-    padding: 15px 5px 5px;
+.d2 {
+    top: 30%;
+    right: 5%;
+    font-size: 25px;
+    transform: rotate(15deg);
 }
 
-.caption span {
-    color: #555;
-    font-size: 9px;
-}
-
-.caption h2 {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 22px;
-    font-weight: 400;
-    margin-top: 7px;
-}
-
-/* FOOTER */
-
-.footer {
-    text-align: center;
-    margin-top: 90px;
-}
-
-.footer p {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
+.d3 {
+    bottom: 10%;
+    left: 7%;
     font-size: 25px;
 }
 
-button {
+.d4 {
+    bottom: 25%;
+    right: 8%;
+    font-size: 30px;
+}
+
+/* MAIN */
+
+.container {
+
+    width: 92%;
+    max-width: 1050px;
+
+    margin: auto;
+
+    padding: 60px 0 80px;
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+/* HEADER */
+
+.header {
+
+    text-align: center;
+
+    margin-bottom: 55px;
+
+}
+
+.small {
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: #a87c96;
+
+    margin-bottom: 15px;
+
+}
+
+h1 {
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: clamp(42px, 8vw, 72px);
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color: #5d3c52;
+
+}
+
+.subtitle {
+
+    margin-top: 15px;
+
+    font-family: 'Caveat', cursive;
+
+    font-size: 25px;
+
+    color: #a45b7c;
+
+}
+
+.line {
+
+    width: 100px;
+
+    height: 1px;
+
+    background: #d89ab5;
+
+    margin: 25px auto;
+
+}
+
+/* SCRAPBOOK */
+
+.gallery {
+
+    display: grid;
+
+    grid-template-columns: repeat(12, 1fr);
+
+    gap: 35px;
+
+    align-items: start;
+
+}
+
+/* POLAROIDS */
+
+.photo-card {
+
+    background: #fffdfb;
+
+    padding: 12px 12px 25px;
+
+    box-shadow:
+        0 12px 30px rgba(105, 70, 85, .15);
+
+    position: relative;
+
+    transition: .4s ease;
+
+}
+
+.photo-card:hover {
+
+    transform: rotate(0deg) scale(1.04) translateY(-8px);
+
+    box-shadow:
+        0 20px 45px rgba(105, 70, 85, .25);
+
+    z-index: 5;
+
+}
+
+.photo-card img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+/* CARD POSITIONS */
+
+.card1 {
+
+    grid-column: 1 / 5;
+
+    transform: rotate(-3deg);
+
+}
+
+.card2 {
+
+    grid-column: 5 / 9;
+
+    transform: rotate(2deg);
+
     margin-top: 35px;
-    background: #eee;
-    color: #111;
-    border: none;
-    padding: 14px 25px;
-    font-family: inherit;
-    cursor: pointer;
+
 }
 
-button:hover {
-    background: #ccc;
+.card3 {
+
+    grid-column: 9 / 13;
+
+    transform: rotate(-2deg);
+
 }
 
-@media(max-width:600px) {
+.card4 {
 
-    header {
-        display: block;
+    grid-column: 2 / 6;
+
+    transform: rotate(2deg);
+
+    margin-top: 20px;
+
+}
+
+.card5 {
+
+    grid-column: 6 / 10;
+
+    transform: rotate(-3deg);
+
+    margin-top: 55px;
+
+}
+
+.card6 {
+
+    grid-column: 9 / 13;
+
+    transform: rotate(3deg);
+
+    margin-top: 10px;
+
+}
+
+/* CAPTIONS */
+
+.caption {
+
+    text-align: center;
+
+    margin-top: 13px;
+
+    font-family: 'Caveat', cursive;
+
+    font-size: 23px;
+
+    color: #583d4d;
+
+}
+
+.number {
+
+    position: absolute;
+
+    top: -13px;
+
+    right: -10px;
+
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: #d98eae;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-family: monospace;
+
+    font-size: 11px;
+
+    box-shadow: 0 4px 10px rgba(100,50,70,.2);
+
+}
+
+/* LITTLE NOTE */
+
+.note {
+
+    max-width: 600px;
+
+    margin: 70px auto 0;
+
+    padding: 30px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,.65);
+
+    border: 1px solid rgba(190,130,160,.3);
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(100,60,80,.08);
+
+}
+
+.note-title {
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: #aa7891;
+
+    margin-bottom: 15px;
+
+}
+
+.note-text {
+
+    font-family: 'Playfair Display', serif;
+
+    font-style: italic;
+
+    font-size: 19px;
+
+    line-height: 1.7;
+
+    color: #5d4351;
+
+}
+
+/* NEXT BUTTON */
+
+.next {
+
+    text-align: center;
+
+    margin-top: 55px;
+
+}
+
+.next a {
+
+    display: inline-block;
+
+    padding: 15px 30px;
+
+    border-radius: 30px;
+
+    text-decoration: none;
+
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #c7799c,
+        #9d7ac4
+    );
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    box-shadow:
+        0 8px 25px rgba(160,100,140,.25);
+
+    transition: .3s;
+
+}
+
+.next a:hover {
+
+    transform: scale(1.06);
+
+    box-shadow:
+        0 12px 30px rgba(160,100,140,.4);
+
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    .container {
+
+        width: 88%;
+
+        padding-top: 40px;
+
     }
 
-    header p {
-        text-align: left;
-        margin-top: 15px;
+    .gallery {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 35px;
+
     }
+
+    .photo-card {
+
+        width: 90%;
+
+        max-width: 350px;
+
+    }
+
+    .card1,
+    .card2,
+    .card3,
+    .card4,
+    .card5,
+    .card6 {
+
+        margin-top: 0;
+
+    }
+
+    .card1 { transform: rotate(-3deg); }
+    .card2 { transform: rotate(3deg); }
+    .card3 { transform: rotate(-2deg); }
+    .card4 { transform: rotate(2deg); }
+    .card5 { transform: rotate(-3deg); }
+    .card6 { transform: rotate(3deg); }
 
 }
 
@@ -158,155 +466,172 @@ button:hover {
 
 <body>
 
+<!-- DECORATIONS -->
+
+<div class="decor d1">♡</div>
+<div class="decor d2">✿</div>
+<div class="decor d3">✦</div>
+<div class="decor d4">♡</div>
+
+
 <div class="container">
 
-<header>
+    <!-- HEADER -->
 
-    <h1>ARCHIVE.</h1>
+    <div class="header">
 
-    <p>
-        FILE 004<br>
-        PRIVATE COLLECTION<br>
-        DO NOT DELETE
-    </p>
-
-</header>
-
-
-<section class="archive">
-
-
-    <article class="card">
-
-        <div class="photo tall">
-            ADD PHOTO HERE
+        <div class="small">
+            CLASSIFIED MEMORY FILE · 04
         </div>
 
-        <div class="caption">
+        <h1>
+            The Archive
+        </h1>
 
-            <span>IMG_001 / EVIDENCE</span>
+        <div class="line"></div>
 
-            <h2>
-                evidence that he is real.
-            </h2>
-
+        <div class="subtitle">
+            a collection of things I couldn't delete ♡
         </div>
 
-    </article>
+    </div>
 
 
-    <article class="card">
+    <!-- PHOTOS -->
 
-        <div class="photo small">
-            ADD PHOTO HERE
-        </div>
+    <div class="gallery">
 
-        <div class="caption">
 
-            <span>IMG_002</span>
+        <!-- PHOTO 1 -->
 
-            <h2>
-                probably my favourite.
-            </h2>
+        <div class="photo-card card1">
+
+            <div class="number">01</div>
+
+            <img src="IMG_5021.jpeg">
+
+            <div class="caption">
+                evidence that he is real ♡
+            </div>
 
         </div>
 
-    </article>
 
+        <!-- PHOTO 2 -->
 
-    <article class="card">
+        <div class="photo-card card2">
 
-        <div class="photo">
-            ADD PHOTO HERE
-        </div>
+            <div class="number">02</div>
 
-        <div class="caption">
+            <img src="IMG_5020.jpeg">
 
-            <span>IMG_003</span>
-
-            <h2>
-                one for the archive.
-            </h2>
+            <div class="caption">
+                look at this boy 😭
+            </div>
 
         </div>
 
-    </article>
 
+        <!-- PHOTO 3 -->
 
-    <article class="card">
+        <div class="photo-card card3">
 
-        <div class="photo">
-            ADD PHOTO HERE
-        </div>
+            <div class="number">03</div>
 
-        <div class="caption">
+            <img src="IMG_5022.jpeg">
 
-            <span>IMG_004</span>
-
-            <h2>
-                look at this boy.
-            </h2>
+            <div class="caption">
+                unfortunately but cute
+            </div>
 
         </div>
 
-    </article>
 
+        <!-- PHOTO 4 -->
 
-    <article class="card">
+        <div class="photo-card card4">
 
-        <div class="photo tall">
-            ADD PHOTO HERE
-        </div>
+            <div class="number">04</div>
 
-        <div class="caption">
+            <img src="IMG_5025.jpeg">
 
-            <span>IMG_005 / CLASSIFIED</span>
-
-            <h2>
-                unfortunately still cute.
-            </h2>
+            <div class="caption">
+                kept this one ♡
+            </div>
 
         </div>
 
-    </article>
 
+        <!-- PHOTO 5 -->
 
-    <article class="card">
+        <div class="photo-card card5">
 
-        <div class="photo small">
-            ADD PHOTO HERE
-        </div>
+            <div class="number">05</div>
 
-        <div class="caption">
+            <img src="IMG_5024.jpeg">
 
-            <span>IMG_006</span>
-
-            <h2>
-                kept this one.
-            </h2>
+            <div class="caption">
+                one for the archive
+            </div>
 
         </div>
 
-    </article>
+
+        <!-- PHOTO 6 -->
+
+        <div class="photo-card card6">
+
+            <div class="number">06</div>
+
+            <img src="IMG_5023.jpeg">
+
+            <div class="caption">
+                probably my fav ♡
+            </div>
+
+        </div>
 
 
-</section>
+    </div>
 
 
-<div class="footer">
+    <!-- LITTLE NOTE -->
 
-    <p>
-        some pictures are just pictures.<br>
-        some hold entire memories.
-    </p>
+    <div class="note">
 
-    <button onclick="location.href='page5.html'">
-        OPEN NEXT FILE →
-    </button>
+        <div class="note-title">
+            ARCHIVE NOTE
+        </div>
 
-</div>
+        <div class="note-text">
+
+            "Some pictures are just pictures.
+            <br>
+            And then there are the ones
+            that somehow make you remember
+            an entire moment."
+
+            <br><br>
+
+            I think these are those.
+
+        </div>
+
+    </div>
+
+
+    <!-- NEXT -->
+
+    <div class="next">
+
+        <a href="./page5.html">
+            CONTINUE THE FILE →
+        </a>
+
+    </div>
 
 </div>
 
 </body>
+
 </html>
