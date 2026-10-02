@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>THE TIMELINE</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #eee9df;
+    color: #27241f;
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+}
+
+.page {
+    width: min(1000px, 92%);
+    margin: auto;
+    padding: 70px 20px;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.heading small {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    opacity: .5;
+}
+
+.heading h1 {
+    font-size: clamp(60px, 12vw, 130px);
+    font-weight: 400;
+    line-height: .8;
+    margin-top: 25px;
+}
+
+.heading p {
+    margin-top: 30px;
+    font-size: 20px;
+    font-style: italic;
+}
+
+/* TIMELINE */
+
+.timeline {
+    position: relative;
+    max-width: 750px;
+    margin: auto;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #999;
+}
+
+.event {
+    position: relative;
+    width: 50%;
+    padding: 30px 45px;
+}
+
+.event:nth-child(odd) {
+    text-align: right;
+    left: 0;
+}
+
+.event:nth-child(even) {
+    left: 50%;
+}
+
+.dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #27241f;
+    border-radius: 50%;
+    top: 40px;
+}
+
+.event:nth-child(odd) .dot {
+    right: -6px;
+}
+
+.event:nth-child(even) .dot {
+    left: -6px;
+}
+
+.date {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    opacity: .55;
+}
+
+.event h2 {
+    font-size: 34px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+.event p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.final {
+    text-align: center;
+    margin: 120px auto 60px;
+}
+
+.final p {
+    font-size: 22px;
+    font-style: italic;
+}
+
+.final h2 {
+    font-size: clamp(45px, 8vw, 80px);
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+button {
+    margin-top: 50px;
+    background: transparent;
+    border: 1px solid #27241f;
+    padding: 14px 25px;
+    font-family: 'DM Mono', monospace;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover {
+    background: #27241f;
+    color: #eee9df;
+}
+
+@media(max-width:650px) {
+
+    .timeline::before {
+        left: 10px;
+    }
+
+    .event,
+    .event:nth-child(even),
+    .event:nth-child(odd) {
+        width: 100%;
+        left: 0;
+        text-align: left;
+        padding-left: 45px;
+    }
+
+    .event .dot,
+    .event:nth-child(odd) .dot,
+    .event:nth-child(even) .dot {
+        left: 4px;
+        right: auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <header class="heading">
+
+        <small>ARCHIVE / MEMORY LOG 003</small>
+
+        <h1>THE<br>TIMELINE</h1>
+
+        <p>
+            some dates are just dates.<br>
+            some become memories.
+        </p>
+
+    </header>
+
+
+    <section class="timeline">
+
+        <div class="event">
+
+            <span class="dot"></span>
+
+            <span class="date">29 JUNE</span>
+
+            <h2>The Beginning</h2>
+
+            <p>
+                Hehe 30 june was the first time we met lol 2-3 mahine itni gossip krne ke baad omgggggg heheeeeeeee the first time i saw  hehe mai kabhi bolti nhi but offc i remember u were wearing black jo gym mein phente and the look u gave me i was blushing andar se never though mr vaibhav jeet walia will become so important to me
+            </p>
+
+        </div>
+
+
+        <div class="event">
+
+            <span class="dot"></span>
+
+            <span class="date">SOMEWHERE ALONG THE WAY</span>
+
+            <h2>It Changed</h2>
+
+            <p>
+                Somewhere between
+                conversations, jokes,
+                calls and ordinary days,
+                you stopped being
+                just someone.
+            </p>
+
+        </div>
+
+
+        <div class="event">
+
+            <span class="dot"></span>
+
+            <span class="date">THE LITTLE THINGS</span>
+
+            <h2>My Favourite Parts</h2>
+
+            <p>
+                you bought chocolate obv bahot choti choti cheez hai but it mattered to me alot
+            </p>
+
+        </div>
+
+
+        <div class="event">
+
+            <span class="dot"></span>
+
+            <span class="date">TODAY</span>
+
+            <h2>Still Here</h2>
+
+            <p>
+                And somehow,
+                after everything,
+                you're still the person
+                this entire website is about.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="final">
+
+        <p>And then I realised...</p>
+
+        <h2>this became an us.</h2>
+
+        <button onclick="location.href='page4.html'">
+            CONTINUE →
+        </button>
+
+    </section>
+
+</div>
+
+</body>
+</html>
