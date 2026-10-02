@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CLASSIFIED — VAIBHAV</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=DM+Mono:wght@300;400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 20% 20%, #3b3325 0%, transparent 35%),
+                radial-gradient(circle at 80% 80%, #29251d 0%, transparent 40%),
+                #171510;
+
+            color: #d6cbb5;
+            font-family: 'DM Mono', monospace;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 35px 15px;
+
+            overflow-x: hidden;
+        }
+
+        /* PAPER */
+
+        .file {
+            position: relative;
+
+            width: min(850px, 95vw);
+
+            min-height: 900px;
+
+            background:
+                linear-gradient(
+                    rgba(255,255,255,0.025),
+                    rgba(0,0,0,0.03)
+                ),
+                #c9bea5;
+
+            color: #28251f;
+
+            padding: 55px;
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,.6),
+                0 5px 15px rgba(0,0,0,.4);
+
+            transform: rotate(-0.5deg);
+
+            animation: appear 1.2s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) rotate(-2deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) rotate(-0.5deg);
+            }
+        }
+
+        /* RED CLASSIFIED STAMP */
+
+        .classified {
+            position: absolute;
+
+            top: 45px;
+            right: 35px;
+
+            border: 4px solid #7b2727;
+
+            color: #7b2727;
+
+            padding: 8px 15px;
+
+            font-family: 'Special Elite', cursive;
+
+            font-size: 20px;
+
+            letter-spacing: 3px;
+
+            transform: rotate(8deg);
+
+            opacity: .85;
+        }
+
+        /* HEADER */
+
+        .top {
+            border-bottom: 2px solid #302c25;
+
+            padding-bottom: 20px;
+
+            margin-bottom: 35px;
+        }
+
+        .top small {
+            font-size: 10px;
+
+            letter-spacing: 3px;
+
+            opacity: .65;
+        }
+
+        .top h1 {
+            font-family: 'Special Elite', cursive;
+
+            font-size: clamp(45px, 8vw, 75px);
+
+            font-weight: normal;
+
+            margin-top: 12px;
+
+            letter-spacing: 4px;
+        }
+
+        .case-number {
+            margin-top: 10px;
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            opacity: .65;
+        }
+
+        /* FILE INTRO */
+
+        .intro {
+            font-family: 'Special Elite', cursive;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            max-width: 650px;
+
+            margin-bottom: 40px;
+        }
+
+        /* INFORMATION GRID */
+
+        .information {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            border-top: 1px solid #575044;
+            border-left: 1px solid #575044;
+
+            margin-bottom: 40px;
+        }
+
+        .field {
+            padding: 18px;
+
+            border-right: 1px solid #575044;
+            border-bottom: 1px solid #575044;
+        }
+
+        .field label {
+            display: block;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            opacity: .55;
+
+            margin-bottom: 8px;
+        }
+
+        .field strong {
+            font-family: 'Special Elite', cursive;
+
+            font-size: 17px;
+
+            font-weight: normal;
+        }
+
+        /* OBSERVATION */
+
+        .observation {
+            border: 1px dashed #625a4d;
+
+            padding: 25px;
+
+            margin-bottom: 40px;
+
+            position: relative;
+        }
+
+        .observation::before {
+            content: "FIELD OBSERVATION";
+
+            position: absolute;
+
+            top: -9px;
+            left: 20px;
+
+            background: #c9bea5;
+
+            padding: 0 8px;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+        }
+
+        .observation p {
+            font-family: 'Special Elite', cursive;
+
+            font-size: 19px;
+
+            line-height: 1.8;
+        }
+
+        /* EVIDENCE */
+
+        .evidence {
+            margin-bottom: 45px;
+        }
+
+        .evidence h2 {
+            font-family: 'Special Elite', cursive;
+
+            font-size: 25px;
+
+            font-weight: normal;
+
+            border-bottom: 1px solid #4d473d;
+
+            padding-bottom: 10px;
+
+            margin-bottom: 20px;
+        }
+
+        .evidence ol {
+            padding-left: 25px;
+        }
+
+        .evidence li {
+            margin-bottom: 15px;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+        /* WARNING */
+
+        .warning {
+            text-align: center;
+
+            border: 2px solid #28251f;
+
+            padding: 18px;
+
+            margin-top: 35px;
+        }
+
+        .warning strong {
+            display: block;
+
+            font-family: 'Special Elite', cursive;
+
+            font-size: 18px;
+
+            margin-bottom: 8px;
+        }
+
+        .warning span {
+            font-size: 10px;
+
+            letter-spacing: 1px;
+        }
+
+        /* BUTTON */
+
+        .next-area {
+            text-align: center;
+
+            margin-top: 40px;
+        }
+
+        button {
+            background: #28251f;
+
+            color: #d6cbb5;
+
+            border: none;
+
+            padding: 15px 30px;
+
+            font-family: 'DM Mono', monospace;
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+
+            box-shadow: 0 8px 20px rgba(0,0,0,.3);
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .file {
+                padding: 30px 22px;
+
+                min-height: auto;
+            }
+
+            .classified {
+                position: relative;
+
+                top: auto;
+                right: auto;
+
+                display: inline-block;
+
+                margin-bottom: 30px;
+            }
+
+            .information {
+                grid-template-columns: 1fr;
+            }
+
+            .top h1 {
+                font-size: 45px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <main class="file">
+
+        <div class="classified">
+            CLASSIFIED
+        </div>
+
+        <header class="top">
+
+            <small>
+                DEPARTMENT OF UNEXPLAINED ATTACHMENTS
+            </small>
+
+            <h1>CASE FILE</h1>
+
+            <p class="case-number">
+                CASE NO. 002 / SUBJECT: VAIBHAV
+            </p>
+
+        </header>
+
+
+        <section class="intro">
+
+            Someone left this file open.
+
+            <br><br>
+
+            We investigated the subject.
+
+            <br>
+
+            Unfortunately...
+
+            <br><br>
+
+            <strong>
+                the evidence is overwhelming.
+            </strong>
+
+        </section>
+
+
+        <section class="information">
+
+            <div class="field">
+                <label>SUBJECT NAME</label>
+                <strong>Vaibhav</strong>
+            </div>
+
+            <div class="field">
+                <label>KNOWN ALIAS</label>
+                <strong>That One Boy</strong>
+            </div>
+
+            <div class="field">
+                <label>HEIGHT</label>
+                <strong>Suspiciously Tall</strong>
+            </div>
+
+            <div class="field">
+                <label>THREAT LEVEL</label>
+                <strong>Extremely High</strong>
+            </div>
+
+            <div class="field">
+                <label>KNOWN EFFECT</label>
+                <strong>Causes Smiles</strong>
+            </div>
+
+            <div class="field">
+                <label>STATUS</label>
+                <strong>Irreplaceable</strong>
+            </div>
+
+        </section>
+
+
+        <section class="observation">
+
+            <p>
+                "Subject appears to have developed
+                an unusual ability to occupy the
+                thoughts of one particular girl
+                approximately 24 hours a day."
+            </p>
+
+        </section>
+
+
+        <section class="evidence">
+
+            <h2>Evidence Collected</h2>
+
+            <ol>
+
+                <li>
+                    Repeated appearances in her thoughts.
+                </li>
+
+                <li>
+                    Unexplained smiling whenever his name appears.
+                </li>
+
+                <li>
+                    Excessive number of memories involving the subject.
+                </li>
+
+                <li>
+                    Complete inability to treat him
+                    like "just another person."
+                </li>
+
+            </ol>
+
+        </section>
+
+
+        <section class="warning">
+
+            <strong>
+                ⚠ CONCLUSION
+            </strong>
+
+            <span>
+                SUBJECT HAS BEEN OFFICIALLY DECLARED
+                TOO IMPORTANT TO DELETE.
+            </span>
+
+        </section>
+
+
+        <div class="next-area">
+
+            <button onclick="nextPage()">
+                OPEN NEXT FILE →
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        function nextPage() {
+
+            document.body.style.transition =
+                "opacity 0.7s ease";
+
+            document.body.style.opacity = "0";
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "page3.html";
+
+            }, 700);
+
+        }
+
+    </script>
+
+</body>
+</html>
