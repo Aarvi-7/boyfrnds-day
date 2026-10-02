@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Final Unlock</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #070707;
+    color: #eee;
+    font-family: "Courier New", monospace;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+}
+
+/* MAIN */
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+}
+
+
+/* LOCK SCREEN */
+
+#lockScreen {
+    animation: appear 1s ease;
+}
+
+.lock {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.classified {
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #777;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    font-size: clamp(42px, 10vw, 70px);
+    margin: 20px 0;
+}
+
+.hint {
+    color: #888;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+input {
+    width: 100%;
+    max-width: 350px;
+
+    padding: 16px;
+
+    background: transparent;
+    border: 1px solid #555;
+
+    color: white;
+
+    text-align: center;
+
+    font-family: monospace;
+    font-size: 16px;
+
+    outline: none;
+}
+
+input:focus {
+    border-color: white;
+}
+
+button {
+    display: block;
+
+    margin: 18px auto;
+
+    padding: 14px 35px;
+
+    border: 1px solid white;
+
+    background: white;
+    color: black;
+
+    font-family: monospace;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background: transparent;
+    color: white;
+}
+
+#error {
+    min-height: 20px;
+    color: #b88;
+    font-size: 12px;
+}
+
+
+/* FINAL MESSAGE */
+
+#final {
+    display: none;
+    animation: reveal 1.5s ease;
+}
+
+.access {
+    color: #8cffaa;
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+.final-title {
+    font-family: Georgia, serif;
+    font-size: clamp(40px, 9vw, 70px);
+    font-weight: normal;
+    line-height: 1.1;
+    margin: 10px 0 35px;
+}
+
+.message {
+    font-family: Georgia, serif;
+    color: #ccc;
+    font-size: 17px;
+    line-height: 2;
+
+    max-width: 560px;
+    margin: auto;
+}
+
+.message p {
+    margin: 0 0 25px;
+}
+
+.heart {
+    font-size: 30px;
+    margin: 25px 0;
+}
+
+.signature {
+    font-family: cursive;
+    font-size: 28px;
+    color: white;
+    margin-top: 35px;
+}
+
+
+/* ANIMATIONS */
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes reveal {
+
+    from {
+        opacity: 0;
+        transform: scale(.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- PASSWORD SCREEN -->
+
+    <div id="lockScreen">
+
+        <div class="lock">
+            🔐
+        </div>
+
+        <div class="classified">
+            FINAL FILE // 011
+        </div>
+
+        <h1>
+            ONE LAST THING.
+        </h1>
+
+        <div class="hint">
+
+            You've made it this far.<br>
+
+            There is one final file waiting for you.
+
+            <br><br>
+
+            <span>
+                HINT: THE DAY IT ALL STARTED.
+            </span>
+
+        </div>
+
+
+        <input
+            type="password"
+            id="password"
+            placeholder="ENTER PASSWORD"
+        >
+
+
+        <button onclick="unlock()">
+            UNLOCK FILE
+        </button>
+
+
+        <div id="error"></div>
+
+    </div>
+
+
+
+    <!-- FINAL MESSAGE -->
+
+    <div id="final">
+
+        <div class="access">
+            ACCESS GRANTED ✓
+        </div>
+
+
+        <div class="heart">
+            ❤️
+        </div>
+
+
+        <div class="final-title">
+            Happy<br>
+            Boyfriend's Day,<br>
+            Vaibhav.
+        </div>
+
+
+        <div class="message">
+
+            <p>
+                I don't know what the future looks like.
+            </p>
+
+            <p>
+                And I don't need an answer tonight.
+            </p>
+
+            <p>
+                I just wanted to make something that would
+                hopefully make you smile for a little while.
+            </p>
+
+            <p>
+                Somewhere between all the memories,
+                conversations, jokes, fights and everything
+                in between...
+            </p>
+
+            <p>
+                you became someone who matters to me.
+            </p>
+
+
+            <p>
+                I'm sorry for my part in the things that
+                hurt us.
+            </p>
+
+            <p>
+                I genuinely mean that.
+            </p>
+
+
+            <p>
+                And regardless of everything,
+                I hope you're happy.
+                I hope you have a beautiful day.
+                And I hope you know that you are cared for.
+            </p>
+
+
+            <p>
+                No pressure.<br>
+                No expectations.<br>
+                Just a little reminder that you are special.
+            </p>
+
+
+            <div class="heart">
+                🌷 ❤️ 🌷
+            </div>
+
+
+            <p>
+                Thank you for all the good memories.
+            </p>
+
+
+            <div class="signature">
+                — R ❤️
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function unlock() {
+
+    const password =
+        document
+        .getElementById("password")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    if (
+        password === "29june" ||
+        password === "29 june" ||
+        password === "vaibhav"
+    ) {
+
+        document
+        .getElementById("lockScreen")
+        .style.display = "none";
+
+
+        document
+        .getElementById("final")
+        .style.display = "block";
+
+    }
+
+    else {
+
+        document
+        .getElementById("error")
+        .innerText =
+        "Wrong password... try again 👀";
+
+    }
+
+}
+
+
+document
+.getElementById("password")
+.addEventListener("keypress", function(event) {
+
+    if (event.key === "Vaibhav") {
+        unlock();
+    }
+
+});
+
+</script>
+
+
+</body>
+
+</html>
