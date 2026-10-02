@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -161,9 +162,27 @@ h1 {
     color: #f5f0e8;
 }
 
+.email-btn {
+    display: inline-block;
+    width: 100%;
+    margin-top: 25px;
+    padding: 16px;
+    border: none;
+    background: #d89ab5;
+    color: #080808;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 1.5px;
+    font-size: 13px;
+}
+
+.email-btn:hover {
+    background: #f0b8d0;
+}
+
 .final-btn {
     display: inline-block;
-    margin-top: 30px;
+    margin-top: 15px;
     padding: 15px 25px;
     background: #f5f0e8;
     color: #080808;
@@ -173,6 +192,7 @@ h1 {
 }
 
 @media(max-width: 500px) {
+
     h1 {
         font-size: 30px;
     }
@@ -195,47 +215,101 @@ h1 {
     <div id="quiz">
 
         <div class="top">
-            <div class="small">CLASSIFIED // LEVEL 06</div>
+
+            <div class="small">
+                CLASSIFIED // LEVEL 06
+            </div>
+
             <h1>THE VAIBHAV QUIZ</h1>
+
             <div class="subtitle">
                 Let's see what goes on inside that head of yours.
             </div>
+
         </div>
 
         <div class="progress-text">
-            <span id="questionNumber">QUESTION 01</span>
+
+            <span id="questionNumber">
+                QUESTION 01
+            </span>
+
             <span>10</span>
+
         </div>
 
         <div class="progress">
-            <div class="progress-bar" id="progressBar"></div>
+
+            <div
+                class="progress-bar"
+                id="progressBar">
+            </div>
+
         </div>
 
-        <div class="question" id="question"></div>
+        <div
+            class="question"
+            id="question">
+        </div>
 
-        <div class="options" id="options"></div>
+        <div
+            class="options"
+            id="options">
+        </div>
 
-        <button class="next-btn" onclick="nextQuestion()">
+        <button
+            class="next-btn"
+            onclick="nextQuestion()">
+
             NEXT →
+
         </button>
 
     </div>
 
-    <div class="result" id="result">
 
-        <div class="small">FILE COMPLETE</div>
+    <div
+        class="result"
+        id="result">
 
-        <h2>So... THAT'S what you think? 👀</h2>
-
-        <div class="result-message">
-            Your answers have officially been recorded.<br>
-            No judgement. Probably.
+        <div class="small">
+            FILE COMPLETE
         </div>
 
-        <div class="answers" id="answers"></div>
+        <h2>
+            So... THAT'S what you think? 👀
+        </h2>
 
-        <a href="page7.html" class="final-btn">
+        <div class="result-message">
+
+            Your answers have officially been recorded.<br>
+            No judgement. Probably.
+
+        </div>
+
+        <div
+            class="answers"
+            id="answers">
+        </div>
+
+
+        <!-- EMAIL BUTTON -->
+
+        <button
+            class="email-btn"
+            onclick="sendAnswers()">
+
+            SEND MY ANSWERS ♡
+
+        </button>
+
+
+        <a
+            href="page7.html"
+            class="final-btn">
+
             CONTINUE THE FILE →
+
         </a>
 
     </div>
@@ -346,93 +420,198 @@ const questions = [
         "You already know the answer ❤️"
     ]
 
-}
 ];
 
+
 let currentQuestion = 0;
+
 let selectedAnswers = [];
+
 
 function loadQuestion() {
 
     const q = questions[currentQuestion];
 
     document.getElementById("questionNumber").innerText =
-        "QUESTION " + String(currentQuestion + 1).padStart(2, "0");
+        "QUESTION " +
+        String(currentQuestion + 1).padStart(2, "0");
 
     document.getElementById("progressBar").style.width =
-        ((currentQuestion + 1) / questions.length * 100) + "%";
+        ((currentQuestion + 1) /
+        questions.length * 100) + "%";
 
-    document.getElementById("question").innerText = q.question;
+    document.getElementById("question").innerText =
+        q.question;
 
-    const optionsDiv = document.getElementById("options");
+    const optionsDiv =
+        document.getElementById("options");
+
     optionsDiv.innerHTML = "";
 
-    q.options.forEach((option, index) => {
 
-        const div = document.createElement("div");
+    q.options.forEach((option) => {
+
+        const div =
+            document.createElement("div");
 
         div.className = "option";
+
         div.innerText = option;
+
 
         div.onclick = function() {
 
-            document.querySelectorAll(".option").forEach(el => {
-                el.classList.remove("selected");
-            });
+            document
+                .querySelectorAll(".option")
+                .forEach(el => {
+
+                    el.classList.remove("selected");
+
+                });
+
 
             div.classList.add("selected");
 
-            selectedAnswers[currentQuestion] = option;
-        };
+            selectedAnswers[currentQuestion] =
+                option;
+
+        }; 
+
 
         optionsDiv.appendChild(div);
+
     });
+
 }
+
 
 function nextQuestion() {
 
     if (!selectedAnswers[currentQuestion]) {
+
         alert("Choose an answer first 👀");
+
         return;
+
     }
 
-    if (currentQuestion < questions.length - 1) {
+
+    if (currentQuestion <
+        questions.length - 1) {
 
         currentQuestion++;
+
         loadQuestion();
 
-    } else {
+    }
+
+    else {
 
         showResults();
 
     }
+
 }
+
 
 function showResults() {
 
-    document.getElementById("quiz").style.display = "none";
-    document.getElementById("result").style.display = "block";
+    document.getElementById("quiz")
+        .style.display = "none";
 
-    const answersDiv = document.getElementById("answers");
+    document.getElementById("result")
+        .style.display = "block";
 
-    selectedAnswers.forEach((answer, index) => {
 
-        const box = document.createElement("div");
-        box.className = "answer-box";
+    const answersDiv =
+        document.getElementById("answers");
+
+
+    answersDiv.innerHTML = "";
+
+
+    selectedAnswers.forEach(
+        (answer, index) => {
+
+        const box =
+            document.createElement("div");
+
+        box.className =
+            "answer-box";
+
 
         box.innerHTML = `
+
             <div class="answer-question">
-                QUESTION ${String(index + 1).padStart(2, "0")}
+
+                QUESTION
+                ${String(index + 1).padStart(2, "0")}
+
             </div>
 
             <div class="answer-choice">
+
                 ${answer}
+
             </div>
+
         `;
 
+
         answersDiv.appendChild(box);
+
     });
+
 }
+
+
+/* SEND ANSWERS TO GMAIL */
+
+function sendAnswers() {
+
+    let emailBody =
+        "THE VAIBHAV QUIZ — ANSWERS\n\n";
+
+
+    questions.forEach((q, index) => {
+
+        emailBody +=
+            "QUESTION " +
+            String(index + 1).padStart(2, "0") +
+            ":\n";
+
+        emailBody +=
+            q.question + "\n";
+
+        emailBody +=
+            "ANSWER: " +
+            selectedAnswers[index] +
+            "\n\n";
+
+    });
+
+
+    emailBody +=
+        "— Sent from The Vaibhav Quiz ♡";
+
+
+    const subject =
+        "The Vaibhav Quiz — His Answers ♡";
+
+
+    const mailtoLink =
+        "mailto:riddhitandon777@gmail.com" +
+        "?subject=" +
+        encodeURIComponent(subject) +
+        "&body=" +
+        encodeURIComponent(emailBody);
+
+
+    window.location.href =
+        mailtoLink;
+
+}
+
 
 loadQuestion();
 
@@ -440,3 +619,4 @@ loadQuestion();
 
 </body>
 </html>
+```
