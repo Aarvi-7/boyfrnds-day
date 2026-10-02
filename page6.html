@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Vaibhav Quiz</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #080808;
+    color: #f5f0e8;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.quiz-container {
+    width: 100%;
+    max-width: 650px;
+    border: 1px solid #444;
+    padding: 35px 25px;
+    background: #101010;
+    box-shadow: 0 0 40px rgba(255,255,255,0.04);
+}
+
+.top {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.small {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #888;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    font-size: 38px;
+    margin: 12px 0 8px;
+    font-weight: normal;
+}
+
+.subtitle {
+    color: #aaa;
+    font-size: 13px;
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    color: #777;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.progress {
+    width: 100%;
+    height: 3px;
+    background: #333;
+    margin-bottom: 35px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 10%;
+    background: #f5f0e8;
+    transition: width 0.3s;
+}
+
+.question {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    line-height: 1.4;
+    margin-bottom: 25px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option {
+    border: 1px solid #444;
+    padding: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+    color: #ddd;
+}
+
+.option:hover {
+    border-color: #aaa;
+    background: #181818;
+}
+
+.option.selected {
+    border-color: #f5f0e8;
+    background: #f5f0e8;
+    color: #080808;
+}
+
+.next-btn {
+    width: 100%;
+    margin-top: 28px;
+    padding: 15px;
+    border: none;
+    background: #f5f0e8;
+    color: #080808;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+.next-btn:hover {
+    background: white;
+}
+
+.result {
+    display: none;
+    text-align: center;
+}
+
+.result h2 {
+    font-family: Georgia, serif;
+    font-size: 34px;
+    font-weight: normal;
+}
+
+.result-message {
+    color: #aaa;
+    line-height: 1.7;
+    margin: 20px 0 30px;
+}
+
+.answers {
+    text-align: left;
+    margin-top: 25px;
+}
+
+.answer-box {
+    border-bottom: 1px solid #333;
+    padding: 14px 0;
+}
+
+.answer-question {
+    color: #777;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.answer-choice {
+    color: #f5f0e8;
+}
+
+.final-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 25px;
+    background: #f5f0e8;
+    color: #080808;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+@media(max-width: 500px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    .question {
+        font-size: 21px;
+    }
+
+    .quiz-container {
+        padding: 28px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+    <div id="quiz">
+
+        <div class="top">
+            <div class="small">CLASSIFIED // LEVEL 06</div>
+            <h1>THE VAIBHAV QUIZ</h1>
+            <div class="subtitle">
+                Let's see what goes on inside that head of yours.
+            </div>
+        </div>
+
+        <div class="progress-text">
+            <span id="questionNumber">QUESTION 01</span>
+            <span>10</span>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="question" id="question"></div>
+
+        <div class="options" id="options"></div>
+
+        <button class="next-btn" onclick="nextQuestion()">
+            NEXT →
+        </button>
+
+    </div>
+
+    <div class="result" id="result">
+
+        <div class="small">FILE COMPLETE</div>
+
+        <h2>So... THAT'S what you think? 👀</h2>
+
+        <div class="result-message">
+            Your answers have officially been recorded.<br>
+            No judgement. Probably.
+        </div>
+
+        <div class="answers" id="answers"></div>
+
+        <a href="page7.html" class="final-btn">
+            CONTINUE THE FILE →
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+{
+    question: "What do you think I noticed first about you?",
+    options: [
+        "Your height",
+        "Your smile",
+        "Your voice",
+        "Your attitude"
+    ]
+},
+
+{
+    question: "What do you think is my favourite thing about you?",
+    options: [
+        "Your personality",
+        "Your smile",
+        "The way you care",
+        "Honestly... everything"
+    ]
+},
+
+{
+    question: "If we had one completely free day together, what would I choose?",
+    options: [
+        "A cute café date",
+        "A long drive",
+        "Exploring somewhere new",
+        "Just staying together all day"
+    ]
+},
+
+{
+    question: "What do you think makes me miss you the most?",
+    options: [
+        "Our conversations",
+        "Your presence",
+        "Our memories",
+        "Random little things"
+    ]
+},
+
+{
+    question: "Which one sounds most like something I'd do?",
+    options: [
+        "Send you a random paragraph",
+        "Make a cute surprise",
+        "Take approximately 500 photos",
+        "All of the above"
+    ]
+},
+
+{
+    question: "What do you think is our most underrated thing?",
+    options: [
+        "Our conversations",
+        "Our inside jokes",
+        "The comfortable silence",
+        "The little moments"
+    ]
+},
+
+{
+    question: "If I could teleport us anywhere right now, where would I take you?",
+    options: [
+        "Mountains",
+        "Beach",
+        "A random city",
+        "Somewhere nobody knows us"
+    ]
+},
+
+{
+    question: "What do you think I secretly love the most?",
+    options: [
+        "When you remember small things",
+        "When you make me laugh",
+        "When you give me attention",
+        "When you randomly show you care"
+    ]
+},
+
+{
+    question: "What do you think I would choose?",
+    options: [
+        "A handwritten letter",
+        "A surprise date",
+        "A thousand photos together",
+        "One perfect memory"
+    ]
+},
+
+{
+    question: "And finally... what do you think you are to me?",
+    options: [
+        "Someone important",
+        "My favourite person",
+        "My biggest headache",
+        "You already know the answer ❤️"
+    ]
+
+}
+];
+
+let currentQuestion = 0;
+let selectedAnswers = [];
+
+function loadQuestion() {
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionNumber").innerText =
+        "QUESTION " + String(currentQuestion + 1).padStart(2, "0");
+
+    document.getElementById("progressBar").style.width =
+        ((currentQuestion + 1) / questions.length * 100) + "%";
+
+    document.getElementById("question").innerText = q.question;
+
+    const optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = "";
+
+    q.options.forEach((option, index) => {
+
+        const div = document.createElement("div");
+
+        div.className = "option";
+        div.innerText = option;
+
+        div.onclick = function() {
+
+            document.querySelectorAll(".option").forEach(el => {
+                el.classList.remove("selected");
+            });
+
+            div.classList.add("selected");
+
+            selectedAnswers[currentQuestion] = option;
+        };
+
+        optionsDiv.appendChild(div);
+    });
+}
+
+function nextQuestion() {
+
+    if (!selectedAnswers[currentQuestion]) {
+        alert("Choose an answer first 👀");
+        return;
+    }
+
+    if (currentQuestion < questions.length - 1) {
+
+        currentQuestion++;
+        loadQuestion();
+
+    } else {
+
+        showResults();
+
+    }
+}
+
+function showResults() {
+
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById("result").style.display = "block";
+
+    const answersDiv = document.getElementById("answers");
+
+    selectedAnswers.forEach((answer, index) => {
+
+        const box = document.createElement("div");
+        box.className = "answer-box";
+
+        box.innerHTML = `
+            <div class="answer-question">
+                QUESTION ${String(index + 1).padStart(2, "0")}
+            </div>
+
+            <div class="answer-choice">
+                ${answer}
+            </div>
+        `;
+
+        answersDiv.appendChild(box);
+    });
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
