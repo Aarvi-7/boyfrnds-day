@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Frequency</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #07110d;
+    color: #b9ffcf;
+    font-family: "Courier New", monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.radio {
+    width: 100%;
+    max-width: 700px;
+    border: 1px solid #3c7350;
+    padding: 35px 25px;
+    box-shadow: 0 0 40px rgba(80,255,130,.08);
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #6da47e;
+    border-bottom: 1px solid #294d35;
+    padding-bottom: 15px;
+}
+
+h1 {
+    font-size: clamp(45px, 10vw, 85px);
+    text-align: center;
+    margin: 45px 0 5px;
+    letter-spacing: 5px;
+}
+
+.frequency {
+    text-align: center;
+    color: #76ff9c;
+    letter-spacing: 4px;
+    font-size: 13px;
+}
+
+.wave {
+    height: 100px;
+    margin: 45px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.wave span {
+    width: 4px;
+    height: 25px;
+    background: #72ff9b;
+    animation: pulse 1s infinite ease-in-out;
+}
+
+.wave span:nth-child(2) { animation-delay:.1s; }
+.wave span:nth-child(3) { animation-delay:.2s; }
+.wave span:nth-child(4) { animation-delay:.3s; }
+.wave span:nth-child(5) { animation-delay:.4s; }
+.wave span:nth-child(6) { animation-delay:.5s; }
+.wave span:nth-child(7) { animation-delay:.6s; }
+.wave span:nth-child(8) { animation-delay:.7s; }
+.wave span:nth-child(9) { animation-delay:.8s; }
+.wave span:nth-child(10) { animation-delay:.9s; }
+
+@keyframes pulse {
+    0%,100% { height:20px; }
+    50% { height:75px; }
+}
+
+.message {
+    border-left: 2px solid #72ff9b;
+    padding: 20px;
+    line-height: 1.9;
+    color: #d0ffdb;
+}
+
+.message::before {
+    content: "INCOMING TRANSMISSION...";
+    display: block;
+    color: #72ff9b;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+button {
+    display: block;
+    margin: 40px auto 0;
+    padding: 14px 28px;
+    background: transparent;
+    border: 1px solid #72ff9b;
+    color: #72ff9b;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #72ff9b;
+    color: #07110d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="radio">
+
+    <div class="top">
+        <span>TRANSMISSION 007</span>
+        <span>STATUS: RECEIVING</span>
+    </div>
+
+    <h1>20.07 FM</h1>
+
+    <div class="frequency">
+        YOU ARE CURRENTLY TUNED IN.
+    </div>
+
+    <div class="wave">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="message">
+        If you ever wonder whether someone is thinking about you...
+
+        <br><br>
+
+        Consider this your proof.
+
+        <br><br>
+
+        Somewhere, at some random moment,
+        there is someone smiling because you exist.
+
+        <br><br>
+
+        Transmission ends.
+
+        <br><br>
+
+        <em>— R</em>
+    </div>
+
+    <button onclick="location.href='page8.html'">
+        CHANGE FREQUENCY →
+    </button>
+
+</div>
+
+</body>
+</html>
