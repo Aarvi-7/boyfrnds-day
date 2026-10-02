@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>THE ARCHIVE</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&family=Playfair+Display:ital@0;1&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #111;
+    color: #eee;
+    font-family: 'Space Mono', monospace;
+    min-height: 100vh;
+}
+
+.container {
+    width: min(1200px, 92%);
+    margin: auto;
+    padding: 50px 0 100px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    border-bottom: 1px solid #444;
+    padding-bottom: 25px;
+    margin-bottom: 50px;
+}
+
+header h1 {
+    font-size: clamp(40px, 8vw, 90px);
+    font-weight: 400;
+    letter-spacing: -5px;
+}
+
+header p {
+    font-size: 10px;
+    color: #777;
+    text-align: right;
+}
+
+/* GRID */
+
+.archive {
+    columns: 3 250px;
+    column-gap: 25px;
+}
+
+.card {
+    break-inside: avoid;
+    margin-bottom: 25px;
+    position: relative;
+    background: #1c1c1c;
+    padding: 12px;
+    transition: .4s;
+}
+
+.card:hover {
+    transform: rotate(-1deg) scale(1.02);
+}
+
+.photo {
+    width: 100%;
+    min-height: 250px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(135deg, #252525, #111);
+
+    color: #666;
+    font-size: 11px;
+    text-align: center;
+}
+
+.tall {
+    min-height: 390px;
+}
+
+.small {
+    min-height: 190px;
+}
+
+.caption {
+    padding: 15px 5px 5px;
+}
+
+.caption span {
+    color: #555;
+    font-size: 9px;
+}
+
+.caption h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 400;
+    margin-top: 7px;
+}
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    margin-top: 90px;
+}
+
+.footer p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 25px;
+}
+
+button {
+    margin-top: 35px;
+    background: #eee;
+    color: #111;
+    border: none;
+    padding: 14px 25px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ccc;
+}
+
+@media(max-width:600px) {
+
+    header {
+        display: block;
+    }
+
+    header p {
+        text-align: left;
+        margin-top: 15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+    <h1>ARCHIVE.</h1>
+
+    <p>
+        FILE 004<br>
+        PRIVATE COLLECTION<br>
+        DO NOT DELETE
+    </p>
+
+</header>
+
+
+<section class="archive">
+
+
+    <article class="card">
+
+        <div class="photo tall">
+            ADD PHOTO HERE
+        </div>
+
+        <div class="caption">
+
+            <span>IMG_001 / EVIDENCE</span>
+
+            <h2>
+                evidence that he is real.
+            </h2>
+
+        </div>
+
+    </article>
+
+
+    <article class="card">
+
+        <div class="photo small">
+            ADD PHOTO HERE
+        </div>
+
+        <div class="caption">
+
+            <span>IMG_002</span>
+
+            <h2>
+                probably my favourite.
+            </h2>
+
+        </div>
+
+    </article>
+
+
+    <article class="card">
+
+        <div class="photo">
+            ADD PHOTO HERE
+        </div>
+
+        <div class="caption">
+
+            <span>IMG_003</span>
+
+            <h2>
+                one for the archive.
+            </h2>
+
+        </div>
+
+    </article>
+
+
+    <article class="card">
+
+        <div class="photo">
+            ADD PHOTO HERE
+        </div>
+
+        <div class="caption">
+
+            <span>IMG_004</span>
+
+            <h2>
+                look at this boy.
+            </h2>
+
+        </div>
+
+    </article>
+
+
+    <article class="card">
+
+        <div class="photo tall">
+            ADD PHOTO HERE
+        </div>
+
+        <div class="caption">
+
+            <span>IMG_005 / CLASSIFIED</span>
+
+            <h2>
+                unfortunately still cute.
+            </h2>
+
+        </div>
+
+    </article>
+
+
+    <article class="card">
+
+        <div class="photo small">
+            ADD PHOTO HERE
+        </div>
+
+        <div class="caption">
+
+            <span>IMG_006</span>
+
+            <h2>
+                kept this one.
+            </h2>
+
+        </div>
+
+    </article>
+
+
+</section>
+
+
+<div class="footer">
+
+    <p>
+        some pictures are just pictures.<br>
+        some hold entire memories.
+    </p>
+
+    <button onclick="location.href='page5.html'">
+        OPEN NEXT FILE →
+    </button>
+
+</div>
+
+</div>
+
+</body>
+</html>
