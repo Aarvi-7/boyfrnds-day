@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Bouquet For You</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #f8f3ed;
+    color: #302823;
+    font-family: Georgia, serif;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+
+.header {
+    text-align: center;
+    padding: 45px 20px 10px;
+}
+
+.header small {
+    font-family: monospace;
+    letter-spacing: 4px;
+    color: #9a8c82;
+    font-size: 10px;
+}
+
+.header h1 {
+    font-size: clamp(42px, 10vw, 75px);
+    font-weight: normal;
+    font-style: italic;
+    margin: 15px 0 5px;
+}
+
+.header p {
+    color: #8c7d73;
+    font-size: 14px;
+}
+
+/* FLOWER AREA */
+
+.garden {
+    position: relative;
+    height: 300px;
+    max-width: 700px;
+    margin: 10px auto;
+}
+
+/* FLOWERS */
+
+.flower {
+    position: absolute;
+    font-size: 38px;
+    animation: float 4s ease-in-out infinite;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.flower:hover {
+    transform: scale(1.35);
+}
+
+.flower1 {
+    left: 15%;
+    top: 40%;
+}
+
+.flower2 {
+    left: 35%;
+    top: 15%;
+    animation-delay: .5s;
+}
+
+.flower3 {
+    left: 55%;
+    top: 30%;
+    animation-delay: 1s;
+}
+
+.flower4 {
+    left: 75%;
+    top: 50%;
+    animation-delay: 1.5s;
+}
+
+.flower5 {
+    left: 45%;
+    top: 65%;
+    animation-delay: 2s;
+}
+
+.flower6 {
+    left: 25%;
+    top: 70%;
+    animation-delay: 2.5s;
+}
+
+@keyframes float {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
+/* MAIN CARD */
+
+.card {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    padding: 35px 25px;
+    text-align: center;
+    background: rgba(255,255,255,.6);
+    border: 1px solid #ddd0c7;
+}
+
+.card .tiny {
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #9b8b80;
+}
+
+.card h2 {
+    font-size: clamp(30px, 7vw, 48px);
+    font-weight: normal;
+    margin: 18px 0;
+}
+
+.card p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #61544c;
+}
+
+.big-message {
+    font-style: italic;
+    font-size: 20px !important;
+    color: #302823 !important;
+    margin-top: 25px;
+}
+
+/* FLOWER MESSAGE */
+
+.flower-message {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(30,25,22,.75);
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.flower-box {
+    background: #faf7f2;
+    padding: 35px;
+    max-width: 400px;
+    text-align: center;
+    border: 1px solid #d8cbc1;
+}
+
+.flower-box p {
+    line-height: 1.8;
+}
+
+.close {
+    margin-top: 15px;
+    background: #302823;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+}
+
+/* FINAL */
+
+.final-line {
+    text-align: center;
+    font-family: monospace;
+    color: #9a8c82;
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding-bottom: 35px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+    <small>THE LAST LITTLE THING</small>
+
+    <h1>A bouquet for you.</h1>
+
+    <p>
+        because flowers felt more appropriate than another paragraph.
+    </p>
+
+</div>
+
+
+<div class="garden">
+
+    <div class="flower flower1"
+         onclick="showFlower(0)">
+        🌷
+    </div>
+
+    <div class="flower flower2"
+         onclick="showFlower(1)">
+        🌸
+    </div>
+
+    <div class="flower flower3"
+         onclick="showFlower(2)">
+        🌼
+    </div>
+
+    <div class="flower flower4"
+         onclick="showFlower(3)">
+        🌷
+    </div>
+
+    <div class="flower flower5"
+         onclick="showFlower(4)">
+        🌸
+    </div>
+
+    <div class="flower flower6"
+         onclick="showFlower(5)">
+        🌼
+    </div>
+
+</div>
+
+
+<div class="card">
+
+    <div class="tiny">
+        07 / 07 / 2026
+    </div>
+
+    <h2>Happy Boyfriend's Day.</h2>
+
+    <p>
+        Not every flower needs a reason to bloom.
+    </p>
+
+    <p>
+        And not every person needs a perfect story
+        to deserve a little happiness.
+    </p>
+
+    <p class="big-message">
+        So here's a little corner of the internet
+        that exists solely to make you smile today.
+    </p>
+
+    <p>
+        Take the flowers.<br>
+        Keep the good memories.<br>
+        And have a really, really good day.
+    </p>
+
+    <p>
+        🌷 🌸 🌼
+    </p>
+
+    <p>
+        — R ❤️
+    </p>
+
+</div>
+
+
+<div class="final-line">
+
+    YOU MADE IT TO THE END.
+
+</div>
+
+
+<!-- POPUP -->
+
+<div class="flower-message" id="flowerMessage">
+
+    <div class="flower-box">
+
+        <p id="flowerText"></p>
+
+        <button class="close" onclick="closeFlower()">
+            keep the flower
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const flowerMessages = [
+
+    "A flower for every time you made me smile.",
+
+    "A flower for all the little memories I still treasure.",
+
+    "A flower because you deserve something pretty today.",
+
+    "A flower for the stupid jokes and random conversations.",
+
+    "A flower for the moments that meant more than they probably seemed.",
+
+    "And one last flower simply because... it's Boyfriend's Day. 🌷"
+
+];
+
+
+function showFlower(index) {
+
+    document.getElementById("flowerText").innerText =
+        flowerMessages[index];
+
+    document.getElementById("flowerMessage").style.display =
+        "flex";
+
+}
+
+
+function closeFlower() {
+
+    document.getElementById("flowerMessage").style.display =
+        "none";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
