@@ -3,441 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACCESS GRANTED</title>
 
-    <title>VAIBHAV.EXE ♡</title>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            min-height: 100vh;
-            background:
-                radial-gradient(circle at 20% 20%, rgba(255, 105, 180, 0.12), transparent 30%),
-                radial-gradient(circle at 80% 80%, rgba(180, 100, 255, 0.12), transparent 30%),
-                #080509;
-
-            color: #f5ddea;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'DM Mono', monospace;
-            overflow: hidden;
-        }
-
-        /* CRT lines */
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background: repeating-linear-gradient(
-                to bottom,
-                rgba(255,255,255,0.025) 0px,
-                rgba(255,255,255,0.025) 1px,
-                transparent 2px,
-                transparent 4px
-            );
-            z-index: 10;
-        }
-
-        .container {
-            width: min(90%, 600px);
-            text-align: center;
-        }
-
-        .terminal {
-            border: 1px solid rgba(255, 150, 210, 0.35);
-            background: rgba(15, 8, 14, 0.85);
-            padding: 45px 30px;
-            box-shadow:
-                0 0 40px rgba(255, 80, 170, 0.08),
-                inset 0 0 30px rgba(255, 80, 170, 0.03);
-        }
-
-        .system {
-            font-size: 12px;
-            letter-spacing: 4px;
-            color: #a88ca2;
-            margin-bottom: 12px;
-        }
-
-        h1 {
-            font-size: clamp(35px, 10vw, 65px);
-            letter-spacing: 8px;
-            color: #ff9dce;
-            text-shadow: 0 0 20px rgba(255, 100, 180, 0.4);
-            margin-bottom: 8px;
-        }
-
-        .version {
-            color: #806b7b;
-            font-size: 11px;
-            margin-bottom: 40px;
-        }
-
-        /* Loading */
-
-        #loadingScreen {
-            transition: opacity 0.8s ease;
-        }
-
-        .loading-text {
-            font-size: 13px;
-            color: #bba4b5;
-            margin-bottom: 15px;
-        }
-
-        .progress-box {
-            width: 100%;
-            height: 18px;
-            border: 1px solid #76516a;
-            padding: 3px;
-            margin-bottom: 12px;
-        }
-
-        .progress {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(
-                90deg,
-                #d85c9d,
-                #ffb1d7
-            );
-            box-shadow: 0 0 12px rgba(255, 120, 190, 0.5);
-            transition: width 0.1s linear;
-        }
-
-        #percentage {
-            font-size: 12px;
-            color: #a88ca2;
-        }
-
-        /* Password screen */
-
-        #passwordScreen {
-            display: none;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-
-        .message {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: clamp(25px, 6vw, 38px);
-            color: #ffd4e9;
-            margin-bottom: 35px;
-        }
-
-        .label {
-            font-size: 11px;
-            letter-spacing: 2px;
-            color: #a88ca2;
-            margin-bottom: 12px;
-        }
-
-        .password-input {
-            width: 100%;
-            padding: 16px;
-            background: rgba(255, 255, 255, 0.025);
-            border: 1px solid #79536b;
-            color: #ffd6eb;
-            font-family: 'DM Mono', monospace;
-            font-size: 15px;
-            text-align: center;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        .password-input:focus {
-            border-color: #ff9dce;
-            box-shadow: 0 0 18px rgba(255, 120, 190, 0.18);
-        }
-
-        .password-input::placeholder {
-            color: #665362;
-        }
-
-        .open-btn {
-            margin-top: 18px;
-            width: 100%;
-            padding: 15px;
-            background: transparent;
-            border: 1px solid #d77aaa;
-            color: #ffc3df;
-            font-family: 'DM Mono', monospace;
-            font-size: 12px;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .open-btn:hover {
-            background: rgba(255, 120, 190, 0.1);
-            box-shadow: 0 0 20px rgba(255, 120, 190, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .hint {
-            margin-top: 25px;
-            font-size: 11px;
-            color: #75616e;
-        }
-
-        .hint span {
-            color: #c08eaa;
-        }
-
-        #error {
-            height: 20px;
-            margin-top: 15px;
-            font-size: 11px;
-            color: #ff8ebf;
-        }
-
-        .heart {
-            position: fixed;
-            color: rgba(255, 150, 210, 0.25);
-            font-size: 18px;
-            animation: float 7s infinite ease-in-out;
-        }
-
-        .heart:nth-child(1) {
-            left: 10%;
-            top: 20%;
-        }
-
-        .heart:nth-child(2) {
-            right: 12%;
-            top: 30%;
-            animation-delay: 2s;
-        }
-
-        .heart:nth-child(3) {
-            left: 18%;
-            bottom: 18%;
-            animation-delay: 4s;
-        }
-
-        .heart:nth-child(4) {
-            right: 20%;
-            bottom: 15%;
-            animation-delay: 1s;
-        }
-
-        @keyframes float {
-            0%,100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-18px);
-            }
-        }
-
-        @media(max-width: 500px) {
-            .terminal {
-                padding: 35px 20px;
-            }
-
-            h1 {
-                letter-spacing: 5px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="heart">♡</div>
-    <div class="heart">♡</div>
-    <div class="heart">♡</div>
-    <div class="heart">♡</div>
+    <div class="scanlines"></div>
 
-    <div class="container">
+    <main class="terminal">
 
-        <div class="terminal">
+        <div class="top-bar">
+            <span>SYS://LOVE_PROTOCOL</span>
+            <span>● ONLINE</span>
+        </div>
 
-            <!-- LOADING SCREEN -->
+        <div class="content">
 
-            <div id="loadingScreen">
+            <p class="small">INITIALIZING...</p>
 
-                <div class="system">
-                    PERSONAL SYSTEM
-                </div>
+            <div class="loading">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
 
-                <h1>VAIBHAV.EXE</h1>
+            <p class="system-text">
+                SYSTEM MESSAGE FOUND.
+            </p>
 
-                <div class="version">
-                    version 20.07 · classified
-                </div>
+            <div class="identity">
+                <p>USER DETECTED:</p>
 
-                <div class="loading-text">
-                    INITIALIZING MEMORY FILE...
-                </div>
+                <h1>VAIBHAV<span class="cursor">_</span></h1>
 
-                <div class="progress-box">
-                    <div class="progress" id="progress"></div>
-                </div>
+                <p class="verified">IDENTITY VERIFIED ✓</p>
+            </div>
 
-                <div id="percentage">
-                    0%
-                </div>
+            <div class="message">
+
+                <p>
+                    A message has been waiting for you.
+                </p>
+
+                <p class="warning">
+                    ⚠ This file is intended for one person only.
+                </p>
 
             </div>
 
+            <button onclick="enterSite()">
+                [ ENTER FILE ]
+            </button>
 
-            <!-- PASSWORD SCREEN -->
-
-            <div id="passwordScreen">
-
-                <div class="system">
-                    SYSTEM READY
-                </div>
-
-                <div class="message">
-                    A message has been waiting for you ♡
-                </div>
-
-                <div class="label">
-                    ENTER PASSWORD TO OPEN THE MESSAGE
-                </div>
-
-                <input
-                    type="password"
-                    id="password"
-                    class="password-input"
-                    placeholder="Enter password..."
-                    autocomplete="off"
-                >
-
-                <button class="open-btn" onclick="checkPassword()">
-                    OPEN MESSAGE →
-                </button>
-
-                <div id="error"></div>
-
-                <div class="hint">
-                    HINT: <span>in the first page 👀</span>
-                </div>
-
-            </div>
+            <p class="bottom-text">
+                FILE ID: 07-05-V<br>
+                ACCESS LEVEL: PRIVATE
+            </p>
 
         </div>
 
-    </div>
+    </main>
 
-
-    <script>
-
-        /* -------------------------
-           LOADING ANIMATION
-        ------------------------- */
-
-        let progress = 0;
-
-        const progressBar = document.getElementById("progress");
-        const percentage = document.getElementById("percentage");
-
-        const loading = setInterval(() => {
-
-            progress++;
-
-            progressBar.style.width = progress + "%";
-            percentage.innerText = progress + "%";
-
-            if (progress >= 100) {
-
-                clearInterval(loading);
-
-                setTimeout(() => {
-
-                    document.getElementById("loadingScreen").style.opacity = "0";
-
-                    setTimeout(() => {
-
-                        document.getElementById("loadingScreen").style.display = "none";
-
-                        const passwordScreen =
-                            document.getElementById("passwordScreen");
-
-                        passwordScreen.style.display = "block";
-
-                        setTimeout(() => {
-                            passwordScreen.style.opacity = "1";
-                        }, 50);
-
-                    }, 800);
-
-                }, 500);
-            }
-
-        }, 30);
-
-
-        /* -------------------------
-           PASSWORD
-        ------------------------- */
-
-        function checkPassword() {
-
-            const input =
-                document.getElementById("password").value
-                .trim()
-                .toLowerCase();
-
-            const error =
-                document.getElementById("error");
-
-            /*
-                CURRENT PASSWORDS:
-                29june
-                29 june
-                vaibhav
-            */
-
-            if (
-                input === "29june" ||
-                input === "29 june" ||
-                input === "vaibhav"
-            ) {
-
-                error.style.color = "#ffb5d8";
-                error.innerText = "ACCESS GRANTED ♡";
-
-                setTimeout(() => {
-                    window.location.href = "page2.html";
-                }, 900);
-
-            } else {
-
-                error.innerText =
-                    "ACCESS DENIED... try again 👀";
-
-                document.getElementById("password").value = "";
-
-            }
-        }
-
-
-        /* Press ENTER to open */
-
-        document.getElementById("password")
-            .addEventListener("keydown", function(event) {
-
-                if (event.key === "Enter") {
-                    checkPassword();
-                }
-
-            });
-
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
