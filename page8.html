@@ -1,199 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Our Little Universe</title>
+<title>Our Little Universe ♡</title>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    margin: 0;
+
     min-height: 100vh;
-    background: #020208;
+
+    background:
+        radial-gradient(circle at 30% 20%, #492052 0%, transparent 25%),
+        radial-gradient(circle at 75% 70%, #341947 0%, transparent 30%),
+        linear-gradient(135deg, #09050d, #180918, #0b0612);
+
     color: white;
-    font-family: Georgia, serif;
-    overflow-x: hidden;
+
+    overflow: hidden;
+
+    font-family: 'Playfair Display', serif;
+
 }
 
 .title {
+
     text-align: center;
-    padding-top: 45px;
-    position: relative;
-    z-index: 5;
-}
 
-.title small {
-    font-family: monospace;
-    letter-spacing: 4px;
-    color: #777;
-}
+    padding-top: 55px;
 
-h1 {
-    font-size: clamp(38px, 8vw, 65px);
-    font-weight: normal;
+    font-size: 42px;
+
     font-style: italic;
-    margin: 12px;
+
+    color: #ffd9eb;
+
+    text-shadow:
+        0 0 15px #ff8fc4,
+        0 0 35px rgba(255,120,190,.5);
+
 }
 
 .subtitle {
-    color: #888;
-    font-family: Arial, sans-serif;
-    font-size: 13px;
+
+    text-align: center;
+
+    margin-top: 10px;
+
+    color: #cdb4d8;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
 }
 
-.universe {
-    height: 65vh;
-    position: relative;
-}
+/* STARS */
 
 .star {
+
     position: absolute;
-    color: white;
-    font-size: 22px;
+
+    color: #fff0f8;
+
+    font-size: 25px;
+
     cursor: pointer;
+
+    transition: .3s;
+
     animation: twinkle 2s infinite alternate;
+
+    text-shadow:
+        0 0 8px #ffb4d7,
+        0 0 20px #ff8fc4;
+
 }
 
 .star:hover {
+
     transform: scale(1.6);
+
+    color: #ffb5d8;
+
 }
 
-.star:nth-child(1) { top:15%; left:15%; }
-.star:nth-child(2) { top:35%; left:75%; }
-.star:nth-child(3) { top:60%; left:25%; }
-.star:nth-child(4) { top:25%; left:50%; }
-.star:nth-child(5) { top:70%; left:70%; }
-.star:nth-child(6) { top:45%; left:90%; }
-.star:nth-child(7) { top:80%; left:50%; }
+.s1 { top: 25%; left: 18%; }
+.s2 { top: 38%; right: 20%; }
+.s3 { top: 55%; left: 30%; }
+.s4 { top: 68%; right: 30%; }
 
 @keyframes twinkle {
-    from { opacity:.3; }
-    to { opacity:1; }
+
+    from {
+        opacity: .4;
+    }
+
+    to {
+        opacity: 1;
+    }
+
 }
+
+/* MESSAGE */
 
 .message {
-    display: none;
+
     position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.9);
-    z-index: 10;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-}
 
-.message-box {
+    left: 50%;
+    bottom: 14%;
+
+    transform: translateX(-50%);
+
+    width: 80%;
     max-width: 500px;
+
     text-align: center;
-    border: 1px solid #555;
-    padding: 35px;
-    background: #08080f;
+
+    font-size: 20px;
+
+    line-height: 1.7;
+
+    font-style: italic;
+
+    color: #ffe6f1;
+
+    opacity: 0;
+
+    transition: .5s;
+
 }
 
-.message-box p {
-    line-height: 1.8;
-    color: #ddd;
+.message.show {
+
+    opacity: 1;
+
 }
 
-.close {
-    margin-top: 20px;
-    background: transparent;
-    color: white;
-    border: 1px solid #555;
-    padding: 10px 20px;
-}
+/* NEXT */
 
 .next {
-    display: none;
+
+    position: fixed;
+
+    bottom: 35px;
+
+    left: 0;
+
+    right: 0;
+
     text-align: center;
-    position: relative;
-    z-index: 20;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: .5s;
+
+}
+
+.next.show {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
 }
 
 .next a {
-    color: white;
+
+    display: inline-block;
+
+    padding: 14px 28px;
+
+    border: 1px solid #ff9bc7;
+
+    border-radius: 30px;
+
+    color: #ffdceb;
+
     text-decoration: none;
-    border: 1px solid #777;
-    padding: 14px 25px;
-    font-family: monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    background: rgba(255,100,170,.1);
+
+    box-shadow: 0 0 20px rgba(255,100,170,.2);
+
 }
+
 </style>
+
 </head>
 
 <body>
 
-<div class="title">
-    <small>ARCHIVE 008</small>
-    <h1>our little universe.</h1>
-    <div class="subtitle">some stars have things to say.</div>
+<h1 class="title">
+    Our Little Universe ♡
+</h1>
+
+<div class="subtitle">
+    tap the stars
 </div>
 
-<div class="universe">
+<div class="star s1" onclick="showMessage(1)">✦</div>
+<div class="star s2" onclick="showMessage(2)">✦</div>
+<div class="star s3" onclick="showMessage(3)">✦</div>
+<div class="star s4" onclick="showMessage(4)">✦</div>
 
-    <div class="star" onclick="showMessage(0)">✦</div>
-    <div class="star" onclick="showMessage(1)">✦</div>
-    <div class="star" onclick="showMessage(2)">✦</div>
-    <div class="star" onclick="showMessage(3)">✦</div>
-    <div class="star" onclick="showMessage(4)">✦</div>
-    <div class="star" onclick="showMessage(5)">✦</div>
-    <div class="star" onclick="showMessage(6)">✦</div>
-
-</div>
-
-<div class="message" id="message">
-    <div class="message-box">
-        <p id="messageText"></p>
-        <button class="close" onclick="closeMessage()">close</button>
-    </div>
-</div>
+<div id="message" class="message"></div>
 
 <div class="next" id="next">
-    <a href="page9.html">THE NEXT MEMORY →</a>
+
+    <a href="./page9.html">
+        THE NEXT MEMORY →
+    </a>
+
 </div>
 
 <script>
 
-const messages = [
-
-    "I hope you know how much your existence has changed my life.",
-
-    "Some memories don't need photographs. You just remember how they felt.",
-
-    "You are genuinely one of my favourite people.",
-
-    "If I could keep one thing forever, it would be the little moments.",
-
-    "You make ordinary days feel a little less ordinary.",
-
-    "No matter how much time passes, some people stay special.",
-
-    "And yes... I would still choose you. ❤️"
-
-];
-
 let clicked = 0;
 
-function showMessage(index) {
+const messages = {
 
-    document.getElementById("messageText").innerText =
-        messages[index];
+    1: "I still remember the little things. ♡",
 
-    document.getElementById("message").style.display = "flex";
+    2: "You made ordinary days feel different.",
+
+    3: "I miss our stupid little conversations.",
+
+    4: "You were never just another person to me. ♡"
+
+};
+
+function showMessage(number) {
+
+    document.getElementById("message").innerText =
+        messages[number];
+
+    document.getElementById("message")
+        .classList.add("show");
 
     clicked++;
 
     if (clicked >= 4) {
-        document.getElementById("next").style.display = "block";
-    }
-}
 
-function closeMessage() {
-    document.getElementById("message").style.display = "none";
+        document.getElementById("next")
+            .classList.add("show");
+
+    }
+
 }
 
 </script>
