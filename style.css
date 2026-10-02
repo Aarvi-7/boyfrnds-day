@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050505;
+    color: #d7d7d7;
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* CRT scanline effect */
+
+.scanlines {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(255,255,255,0.025) 4px
+    );
+    z-index: 10;
+}
+
+/* Main terminal */
+
+.terminal {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #292929;
+}
+
+/* Top bar */
+
+.top-bar {
+    height: 45px;
+    border-bottom: 1px solid #292929;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    font-size: 12px;
+    color: #777;
+}
+
+.top-bar span:last-child {
+    color: #777;
+}
+
+/* Content */
+
+.content {
+    width: min(850px, 90%);
+    margin: auto;
+    text-align: center;
+}
+
+.small {
+    color: #666;
+    font-size: 13px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 55px;
+}
+
+.loading span {
+    width: 8px;
+    height: 8px;
+    background: #aaa;
+    animation: blink 1.2s infinite;
+}
+
+.loading span:nth-child(2) { animation-delay: .1s; }
+.loading span:nth-child(3) { animation-delay: .2s; }
+.loading span:nth-child(4) { animation-delay: .3s; }
+.loading span:nth-child(5) { animation-delay: .4s; }
+.loading span:nth-child(6) { animation-delay: .5s; }
+.loading span:nth-child(7) { animation-delay: .6s; }
+.loading span:nth-child(8) { animation-delay: .7s; }
+
+@keyframes blink {
+    0%, 100% {
+        opacity: .2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.system-text {
+    font-size: 13px;
+    color: #666;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+/* Identity */
+
+.identity p {
+    font-size: 14px;
+    color: #777;
+    letter-spacing: 3px;
+}
+
+.identity h1 {
+    font-size: clamp(55px, 12vw, 120px);
+    letter-spacing: 15px;
+    margin: 12px 0 20px;
+    font-weight: 400;
+    color: #e8e8e8;
+}
+
+.cursor {
+    animation: cursorBlink .8s infinite;
+}
+
+@keyframes cursorBlink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.verified {
+    color: #aaa !important;
+    font-size: 12px !important;
+}
+
+/* Message */
+
+.message {
+    margin: 55px auto 35px;
+    line-height: 2;
+}
+
+.message p:first-child {
+    font-size: 18px;
+    color: #bbb;
+}
+
+.warning {
+    font-size: 11px;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Button */
+
+button {
+    background: transparent;
+    color: #ddd;
+    border: 1px solid #555;
+    padding: 14px 35px;
+    font-family: inherit;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover {
+    background: #ddd;
+    color: #050505;
+    box-shadow: 0 0 25px rgba(255,255,255,.15);
+}
+
+/* Bottom */
+
+.bottom-text {
+    margin-top: 45px;
+    font-size: 9px;
+    line-height: 1.8;
+    color: #444;
+    letter-spacing: 2px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .top-bar {
+        padding: 0 12px;
+        font-size: 9px;
+    }
+
+    .identity h1 {
+        letter-spacing: 7px;
+    }
+
+    .message {
+        margin-top: 40px;
+    }
+
+}
