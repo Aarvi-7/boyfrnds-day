@@ -6,6 +6,73 @@
     <title>ACCESS GRANTED</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* PASSWORD SECTION */
+
+        .password-section {
+            margin-top: 25px;
+            display: none;
+        }
+
+        .password-label {
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .password-input {
+            width: 80%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid #777;
+            color: white;
+            font-family: inherit;
+            text-align: center;
+            outline: none;
+        }
+
+        .password-input:focus {
+            border-color: white;
+        }
+
+        .password-input::placeholder {
+            color: #777;
+        }
+
+        .password-btn {
+            margin-top: 12px;
+            padding: 11px 20px;
+            background: transparent;
+            border: 1px solid #aaa;
+            color: white;
+            font-family: inherit;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .password-btn:hover {
+            background: white;
+            color: black;
+        }
+
+        .hint {
+            margin-top: 15px;
+            font-size: 11px;
+            color: #888;
+        }
+
+        .error {
+            margin-top: 10px;
+            font-size: 11px;
+            color: #ff7fae;
+            min-height: 15px;
+        }
+
+        .hidden-clue {
+            cursor: default;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,9 +108,13 @@
             <div class="identity">
                 <p>USER DETECTED:</p>
 
-                <h1>VAIBHAV<span class="cursor">_</span></h1>
+                <h1>
+                    VAIBHAV<span class="cursor">_</span>
+                </h1>
 
-                <p class="verified">IDENTITY VERIFIED ✓</p>
+                <p class="verified">
+                    IDENTITY VERIFIED ✓
+                </p>
             </div>
 
             <div class="message">
@@ -58,9 +129,46 @@
 
             </div>
 
-            <button onclick="enterSite()">
+
+            <!-- PASSWORD SECTION -->
+
+            <div class="password-section" id="passwordSection">
+
+                <p class="password-label">
+                    ENTER PASSWORD TO OPEN THE MESSAGE
+                </p>
+
+                <input
+                    type="password"
+                    id="password"
+                    class="password-input"
+                    placeholder="Enter password..."
+                    autocomplete="off"
+                >
+
+                <br>
+
+                <button
+                    class="password-btn"
+                    onclick="checkPassword()">
+                    [ OPEN MESSAGE ]
+                </button>
+
+                <p class="hint">
+                    HINT: in the first page 👀
+                </p>
+
+                <p class="error" id="error"></p>
+
+            </div>
+
+
+            <!-- ORIGINAL BUTTON -->
+
+            <button id="enterButton" onclick="showPassword()">
                 [ ENTER FILE ]
             </button>
+
 
             <p class="bottom-text">
                 FILE ID: 07-05-V<br>
@@ -71,7 +179,77 @@
 
     </main>
 
-    <script src="script.js"></script>
+
+    <script>
+
+        /* First button reveals password */
+
+        function showPassword() {
+
+            document.getElementById("enterButton").style.display = "none";
+
+            document.getElementById("passwordSection").style.display = "block";
+
+        }
+
+
+        /* Password */
+
+        function checkPassword() {
+
+            const password =
+                document.getElementById("password").value
+                .trim()
+                .toLowerCase();
+
+            const error =
+                document.getElementById("error");
+
+
+            /*
+                PASSWORD:
+
+                VAIBHAV
+
+                You can change this later.
+            */
+
+            if (password === "november18") {
+
+                error.innerText = "ACCESS GRANTED ✓";
+
+                setTimeout(function() {
+
+                    window.location.href = "page2.html";
+
+                }, 700);
+
+            } else {
+
+                error.innerText =
+                    "ACCESS DENIED... TRY AGAIN 👀";
+
+                document.getElementById("password").value = "";
+
+            }
+
+        }
+
+
+        /* Press ENTER */
+
+        document.getElementById("password")
+            .addEventListener("keydown", function(event) {
+
+                if (event.key === "Enter") {
+
+                    checkPassword();
+
+                }
+
+            });
+
+    </script>
 
 </body>
 </html>
